@@ -10,6 +10,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'jistr/vim-nerdtree-tabs'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'Townk/vim-autoclose'
 NeoBundle 'tpope/vim-rails'
@@ -28,18 +29,24 @@ set number
 set incsearch
 set showmatch
 set smartindent
-set tabstop=2
+set tabstop=4
 set expandtab
-set shiftwidth=2
+set shiftwidth=4
 set hlsearch
 set list
 set listchars=tab:>-,eol:¬,trail:_
-set clipboard=unnamedplus
+set clipboard=unnamed,autoselect
 set laststatus=2
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 set fileencodings=utf-8,cp932,euc-jp
 set nostartofline
+set backspace=2
 
+" ノーマルモード時だけ ; と : を入れ替える
+nnoremap ; :
+nnoremap : ;
+
+map <C-n> <plug>NERDTreeTabsToggle<CR>
 """"""""""""""""""""""""""""""
 "挿入モード時、ステータスラインの色を変更
 """""""""""""""""""""""""""""""
@@ -76,3 +83,4 @@ function! s:StatusLine(mode)
 set clipboard=unnamed,autoselect
 
 colorscheme molokai
+set t_Co=256
